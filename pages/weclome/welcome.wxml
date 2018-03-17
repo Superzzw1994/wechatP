@@ -1,0 +1,8 @@
+<!-- view等于div -->
+<view class="container">
+  <image class="user-avatar" src="../../images/avatar/1.png" />
+  <text class="user-name">hello zzw~</text>
+  <view class="moto-container" bindtap='clickhandler'>
+    <text class="moto" >start</text>
+  </view>
+</view>

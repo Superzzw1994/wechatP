@@ -1,0 +1,6 @@
+<import src="../movieList/movieList.wxml"/>
+ <view>
+  <template is="movieListTemplate" data="{{...inThreater}}"/>
+  <template is="movieListTemplate" data="{{...comingSoon}}"/> 
+  <template is="movieListTemplate" data="{{...Top250Movies}}"/> 
+</view> 
