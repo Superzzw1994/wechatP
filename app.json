@@ -4,9 +4,7 @@
     "pages/movies/movies",
     "pages/post/post",
     "pages/post/news-detil/news-detail",
-    "pages/stars/stars",
-    "pages/movie/movie",
-    "pages/movieList/movieList"
+    "pages/more/more"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -2,7 +2,13 @@ var app = getApp();
 var util = require("../../util/int");
 Page({
   data: {
-    
+    movies:{}
+  },
+  moreHandler(event) {
+    var type = event.currentTarget.dataset.title;
+    wx.navigateTo({
+      url: '../more/more?title='+type
+    })
   },
   handleData(res, setName,Type){
     var result = [];
@@ -27,38 +33,19 @@ Page({
       movies:result
     }
     this.setData(readyData)
-   
   },
-  getMovies(url,setName,Type){
-    var that = this;
-    wx.request({
-      url: url,
-      data: {
-        "start": 0,
-        "count": 3
-      },
-      method: 'GET',
-      header: {
-        "Content-Type": ""
-      },
-      success(res) {
-        that.handleData(res.data, setName,Type)
-      },
-      fail() {
-        console.log("error")
-      }
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var that = this;
     var Top250Movies = app.globalData.baseUrl +"/v2/movie/top250";
     var comingSoonUrl = app.globalData.baseUrl +"/v2/movie/coming_soon";
     var inThreaterUrl = app.globalData.baseUrl +"/v2/movie/in_theaters";
-    this.getMovies(inThreaterUrl,"inThreater","正在上映");
-    this.getMovies(comingSoonUrl,"comingSoon","即将上映");
-    this.getMovies(Top250Movies,"Top250Movies","Top250");
+    var Data = {
+      "start": 0,
+      "count": 3
+    };
+    util.http(inThreaterUrl, Data , 'GET', this.handleData, "inThreater", "正在上映");
+    util.http(comingSoonUrl, Data , 'GET', this.handleData, "comingSoon", "即将上映")
+    util.http(Top250Movies, Data , 'GET', this.handleData, "Top250Movies", "Top250")
   },
 
   /**

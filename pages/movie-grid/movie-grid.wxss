@@ -1,0 +1,13 @@
+.container{
+  width:100%;
+  margin: 40rpx 0;
+  height:1300rpx;
+}
+.movie_box{
+  float:left;
+  margin-bottom: 40rpx;
+  width:33.33333%;
+}
+.movie_image{
+  width: 100%!important;
+}
