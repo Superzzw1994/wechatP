@@ -2,7 +2,16 @@ var app = getApp();
 var util = require("../../util/int");
 Page({
   data: {
-    movies:{}
+    movies:{},
+    moiveConShow:true,
+    searchConShow:false
+  },
+  showDetail(event) {
+    var id = event.currentTarget.dataset.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id='+id
+    })
   },
   moreHandler(event) {
     var type = event.currentTarget.dataset.title;
@@ -47,7 +56,29 @@ Page({
     util.http(comingSoonUrl, Data , 'GET', this.handleData, "comingSoon", "即将上映")
     util.http(Top250Movies, Data , 'GET', this.handleData, "Top250Movies", "Top250")
   },
-
+  fouces(event){
+    this.setData({
+      moiveConShow: false,
+      searchConShow: true  
+    })
+    this.setData({
+      search:{}
+    })
+  },
+  input(event){
+    var text = event.detail.value;
+    var url = app.globalData.baseUrl + "/v2/movie/search?q="+text;
+    util.http(url, {}, 'GET', this.handleData, "search", "");
+  },
+  zzw(res){
+    console.log(res)
+  },
+  closeBtn(){
+    this.setData({
+      moiveConShow: true,
+      searchConShow: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,0 +1,28 @@
+<import src="../stars/stars.wxml"/>
+<view class="movie-detail">
+  <view class="avatar">
+    <text class="title">大话西游之大圣娶亲</text>
+    <text class="location">香港`1995</text>
+    <text class="year">1995</text>
+    <view class="interview">
+    <text class="comments">231231</text>
+    <text class="reviews">talk</text>
+    <image src="../../images/avatar/1.png"></image>
+    </view>
+  </view>
+  <view class="detail">
+      <text class="name">西游记之大结局</text>
+      <view class="stars-container">
+          <template is="starsTemplate"/>
+      </view>
+      <text class="dirctor">刘振伟</text>
+      <text class="actor">zzw</text>
+      <text class="type">move</text>
+  </view>
+  <view class="content">
+    <text></text>
+  </view>
+  <view class="actor_image">
+    <image src=""></image>
+  </view>
+</view>

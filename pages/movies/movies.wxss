@@ -1,1 +1,26 @@
 @import "../movieList/movieList.wxss";
+@import "../movie-grid/movie-grid.wxss";
+.search-box{
+  position: relative;
+}
+.search_input{
+  width:100%;
+  background-color: #ddd;
+  padding-left:20rpx;
+  height:60rpx;
+  line-height: 60rpx; 
+  border-radius: 4rpx;
+  font-size:30rpx;
+}
+.placeholder_class{
+ font-size:30rpx;
+ color:black; 
+}
+.close_btn{
+  width:30rpx;
+  height:30rpx;
+  position: absolute;
+  right:15rpx;
+  top:15rpx;
+  z-index: 100;
+}

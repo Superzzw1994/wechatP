@@ -1,22 +1,30 @@
-// pages/movie/movie.js
+var app = getApp();
+var util = require("../../util/int");
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
   
   },
-  showDetail(event){
-    console.log(1)
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
 
+  onLoad: function (options) {
+   var movieId = options.id;
+   console.log(movieId)
+   var url = app.globalData.baseUrl +
+      "/v2/movie/subject/" + movieId;
+   this.movieDetailHandler(url)
+  },
+  movieDetailHandler(url){
+    util.http(url,{},'GET',this.source)
+  },
+  source(res){
+    var movieDetail = {};
+    movieDetail.title = res.original_title;
+    //处理数组
+    movieDetail.location = res.countries;
+    movieDetail.reviews = res.reviews_count;
+    movieDetail.wish = res.wish_count;
+    movieDetail.comments = res.comments_count;
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

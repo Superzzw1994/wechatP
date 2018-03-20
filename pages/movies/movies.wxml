@@ -1,6 +1,15 @@
 <import src="../movieList/movieList.wxml"/>
- <view>
+<import src="../movie-grid/movie-grid.wxml"/>
+<view class="search-box">
+  <input class="search_input" placeholder="zzw is a genius" placeholder-class="placeholder_class" bindfocus="fouces" bindconfirm="input"></input>
+  <image src="../../images/icon/xx.png" class="close_btn" catchtap="closeBtn"></image>
+</view>
+ <view class="moive-container" wx:if="{{moiveConShow}}">
   <template is="movieListTemplate" data="{{...inThreater}}"/>
   <template is="movieListTemplate" data="{{...comingSoon}}"/> 
   <template is="movieListTemplate" data="{{...Top250Movies}}"/> 
 </view> 
+<view class="search-container" wx:if="{{searchConShow}}">
+  <template is="movieGrid" data="{{...search}}"/>
+</view>
+
