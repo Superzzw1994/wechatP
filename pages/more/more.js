@@ -6,6 +6,13 @@ Page({
     currentUrl:"",
     start:0
   },
+  showDetail(event) {
+    var id = event.currentTarget.dataset.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + id
+    })
+  },
   bindscrolltoupper(event){
      console.log("reflush")
   },

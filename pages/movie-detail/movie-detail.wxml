@@ -1,28 +1,58 @@
 <import src="../stars/stars.wxml"/>
 <view class="movie-detail">
-  <view class="avatar">
-    <text class="title">大话西游之大圣娶亲</text>
-    <text class="location">香港`1995</text>
-    <text class="year">1995</text>
+    <image class="head-img" src="{{detail.avatar}}" mode="aspectFill" />
+    <view class="avatar">
+    <text class="title">{{detail.title}}</text>
+    <text class="location">{{detail.location+ " · "+detail.year}}</text>
     <view class="interview">
-    <text class="comments">231231</text>
-    <text class="reviews">talk</text>
-    <image src="../../images/avatar/1.png"></image>
+        <text class="highlight-font">
+            {{detail.reviews}}
+        </text>
+        <text class="plain-font">
+            人喜欢
+        </text>
+        <text class="highlight-font">
+            {{detail.comments}}
+        </text>
+        <text class="plain-font">
+            条评论
+        </text>
     </view>
   </view>
+  <image class="movie-img" src="{{detail.avatar}}" data-src="{{detail.avatar}}" />
   <view class="detail">
-      <text class="name">西游记之大结局</text>
-      <view class="stars-container">
-          <template is="starsTemplate"/>
+      <text class="name">{{detail.original}}</text>
+      <view class="flex-row">
+          <template is="starsTemplate" data="{{...detail.rating}}"/>
       </view>
-      <text class="dirctor">刘振伟</text>
-      <text class="actor">zzw</text>
-      <text class="type">move</text>
+      <view class="flex-row">
+        <text class="mark">导演</text>
+        <text class="dirctor" wx:for="{{detail.dirctor}}" wx:for-item="dirctor">{{dirctor.name}}</text>
+    </view>
+    <view class="flex-row">
+        <text class="mark">影人</text>
+      <text class="casts" wx:for="{{detail.casts}}" wx:for-item="cast">{{cast.name}}</text>
+    </view>
+    <view class="flex-row">
+        <text class="mark">类型</text>
+      <text class="genres" wx:for="{{detail.genres}}" wx:for-item="genre">{{genre}}</text>
+    </view>
   </view>
-  <view class="content">
-    <text></text>
+  <view class="hr"></view>
+  <view class="synopsis">
+    <text class="synopsis-font">剧情简介</text>
+    <text class="summary-content">{{detail.summary}}</text>
   </view>
-  <view class="actor_image">
-    <image src=""></image>
-  </view>
+  <view class="hr"></view>
+  <view class="cast">
+      <text class="cast-font"> 影人</text>
+  <scroll-view class="cast-imgs" scroll-x="true" style="width:100%">
+      <block wx:for="{{detail.casts}}" wx:for-item="cast">
+        <view class="cast-container">
+          <image class="cast-img" src="{{cast.avatars.large}}"></image>
+          <text class="cast-name">{{cast.name}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    </view>
 </view>

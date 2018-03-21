@@ -18,12 +18,34 @@ Page({
   source(res){
     var movieDetail = {};
     movieDetail.title = res.original_title;
-    //处理数组
     movieDetail.location = res.countries;
+    movieDetail.year = res.year;
     movieDetail.reviews = res.reviews_count;
     movieDetail.wish = res.wish_count;
     movieDetail.comments = res.comments_count;
-    
+    movieDetail.avatar = res.images.large;
+    movieDetail.original = res.original_title;
+    //处理数组
+    res.rating.stars = util.Mathround(res.rating.average);
+    console.log(res.rating)
+    movieDetail.rating = res.rating;
+    movieDetail.dirctor = res.directors;
+    for(var i = 0; i < res.casts.length -1;i++){
+      res.casts[i].name = res.casts[i].name + " / "
+    }
+    movieDetail.casts = res.casts;
+    for(var i = 0; i < res.genres.length -1;i++){
+      res.genres[i] = res.genres[i] + " 、"
+    }
+    movieDetail.genres = res.genres;
+    if (res.summary){
+      movieDetail.summary = res.summary;
+    }else{
+      movieDetail.summary = "暂无简介";
+    }
+    this.setData({
+      detail : movieDetail
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
